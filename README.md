@@ -10,7 +10,7 @@ SFTabBarComponent
 
 ### 1、获取SFTabBarController，SFAppEntry里使用，其他组件不可使用。
 
-- **Page：**Page_SFTabBarController
+- **Page：** Page_SFTabBarController
 
 ```
 UIViewController *rootViewController = [SFRoute getPage:@"Page_SFTabBarController" componentName:@"SFTabBarComponent" context:nil];
