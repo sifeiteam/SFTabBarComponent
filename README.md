@@ -20,19 +20,19 @@ UIViewController *rootViewController = [SFRoute getPage:@"Page_SFTabBarControlle
 
 调用[[SFInjection sharedInstance] injectWithIdentifier: params:];注入页面到Tab
 
-- **identifier：**Injection_SFTab
+- **identifier：** Injection_SFTab
 
 - **params：**
 
-  - **componentName：**tab页面所在的组件名
+  - **componentName：** tab页面所在的组件名
 
-  - **Page：**tab页面Page唯一标识
+  - **Page：** tab页面Page唯一标识
 
-  - **context：**上下文，会传递到组件的getPage:componentName:context:方法
+  - **context：** 上下文，会传递到组件的getPage:componentName:context:方法
 
-  - **tabTitle：**tab标题
+  - **tabTitle：** tab标题
 
-  - **tabImage：**tab图片，必须是UIImage
+  - **tabImage：** tab图片，必须是UIImage
 
 ```
 //将个人中心注入到tabbar
