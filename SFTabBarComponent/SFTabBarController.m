@@ -9,6 +9,11 @@
 #import "SFTabBarController.h"
 #import <SFComponent/SFInjection.h>
 #import <SFComponent/SFRoute.h>
+#import <SFComponent/SFFont.h>
+#import <SFComponent/SFColors.h>
+#import <SFComponent/SFConfiguration.h>
+#import <SFComponent/SFComponentManager.h>
+#import "SFTabBarComponent.h"
 
 @interface SFTabBarController () <SFInjectionProtocol>
 
@@ -21,9 +26,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [[SFInjection sharedInstance] addDelegate:self identifier:Injection_SFTab_Identifier];
-        
+        //启动tab列表中的组件
+        [self startupTabComponents];
         [self addTabs];
+        [self addObservers];
     }
     return self;
 }
@@ -38,6 +44,15 @@
     self.tabBar.hidden = (!viewControllers || viewControllers.count < 2);
 }
 
+- (void)startupTabComponents {
+    NSDictionary *tabs = [SFConfiguration configDictionaryWithFileName:@"Tab.plist" componentName:[SFTabBarComponent componentName]];
+    NSArray *keys = [tabs allKeys];
+    for (NSNumber *key in keys) {
+        NSString *componentName = [tabs objectForKey:key];
+        [[SFComponentManager sharedInstance] startupComponentWithName:componentName];
+    }
+}
+
 - (void)addTabs {
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     
@@ -45,20 +60,46 @@
     for (NSDictionary *param in params) {
         UIViewController *viewController = [self getViewControllerWithParam:param];
         if (viewController) {
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-            [viewControllers addObject:navigationController];
+            [viewControllers addObject:viewController];
         }
     }
     
     [self setViewControllers:viewControllers animated:NO];
 }
 
+- (void)addObservers {
+    [[SFInjection sharedInstance] addDelegate:self identifier:Injection_SFTab_Identifier];
+}
+
 - (UIViewController *)getViewControllerWithParam:(NSDictionary *)param {
     NSString *componentName = [param objectForKey:@"componentName"];
     NSString *page = [param objectForKey:@"page"];
     NSDictionary *context = [param objectForKey:@"context"];
+    NSString *tabTitle = [param objectForKey:@"tabTitle"];
+    UIImage *tabImage = [param objectForKey:@"tabImage"];
     
-    return [SFRoute getPage:page componentName:componentName context:context];
+    UIViewController *viewController = [SFRoute getPage:page componentName:componentName context:context];
+    if (!viewController) {
+        return nil;
+    }
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.tabBarItem.title = tabTitle;
+    navigationController.tabBarItem.image = tabImage;
+    
+    // 普通状态下的文字属性
+    NSDictionary *normalAttributes = @{NSFontAttributeName : SFFontWithNumber(14),
+                                       NSForegroundColorAttributeName : SFColorWithNumber(1)
+                                       };
+    // 选中状态下的文字属性
+    NSDictionary *selectedAttributes = @{NSFontAttributeName : SFFontWithNumber(14),
+                                       NSForegroundColorAttributeName : SFColorWithNumber(2)
+                                       };
+    
+    [navigationController.tabBarItem setTitleTextAttributes:normalAttributes forState:UIControlStateNormal];
+    [navigationController.tabBarItem setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
+    
+    return navigationController;
 }
 
 #pragma mark - SFInjectionProtocol
@@ -72,8 +113,7 @@
     if (!viewControllers) {
         viewControllers = [[NSMutableArray alloc] init];
     }
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [viewControllers addObject:navigationController];
+    [viewControllers addObject:viewController];
     
     [self setViewControllers:viewControllers animated:NO];
 }

@@ -31,10 +31,18 @@
 		563AD473222B7F1700C482C7 /* SFTabBarComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTabBarComponent.m; sourceTree = "<group>"; };
 		563AD47B222B7F3500C482C7 /* SFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTabBarController.h; sourceTree = "<group>"; };
 		563AD47C222B7F3500C482C7 /* SFTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTabBarController.m; sourceTree = "<group>"; };
+		56E121722235088D0012D9CF /* SFTabBarComponentBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFTabBarComponentBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		563AD46C222B7F1700C482C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56E1216F2235088D0012D9CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -48,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				563AD471222B7F1700C482C7 /* SFTabBarComponent */,
+				56E121732235088D0012D9CF /* SFTabBarComponentBundle */,
 				563AD470222B7F1700C482C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				563AD46F222B7F1700C482C7 /* libSFTabBarComponent.a */,
+				56E121722235088D0012D9CF /* SFTabBarComponentBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +79,13 @@
 				563AD47C222B7F3500C482C7 /* SFTabBarController.m */,
 			);
 			path = SFTabBarComponent;
+			sourceTree = "<group>";
+		};
+		56E121732235088D0012D9CF /* SFTabBarComponentBundle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SFTabBarComponentBundle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +108,23 @@
 			productReference = 563AD46F222B7F1700C482C7 /* libSFTabBarComponent.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		56E121712235088D0012D9CF /* SFTabBarComponentBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56E121772235088D0012D9CF /* Build configuration list for PBXNativeTarget "SFTabBarComponentBundle" */;
+			buildPhases = (
+				56E1216E2235088D0012D9CF /* Sources */,
+				56E1216F2235088D0012D9CF /* Frameworks */,
+				56E121702235088D0012D9CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SFTabBarComponentBundle;
+			productName = SFTabBarComponentBundle;
+			productReference = 56E121722235088D0012D9CF /* SFTabBarComponentBundle.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -101,6 +135,9 @@
 				ORGANIZATIONNAME = com.sf.ios;
 				TargetAttributes = {
 					563AD46E222B7F1700C482C7 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					56E121712235088D0012D9CF = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -118,9 +155,20 @@
 			projectRoot = "";
 			targets = (
 				563AD46E222B7F1700C482C7 /* SFTabBarComponent */,
+				56E121712235088D0012D9CF /* SFTabBarComponentBundle */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		56E121702235088D0012D9CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		563AD46B222B7F1700C482C7 /* Sources */ = {
@@ -129,6 +177,13 @@
 			files = (
 				563AD47D222B7F3500C482C7 /* SFTabBarController.m in Sources */,
 				563AD474222B7F1700C482C7 /* SFTabBarComponent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56E1216E2235088D0012D9CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +324,40 @@
 			};
 			name = Release;
 		};
+		56E121752235088D0012D9CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SFTabBarComponentBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sf.ios.SFTabBarComponentBundle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		56E121762235088D0012D9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SFTabBarComponentBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sf.ios.SFTabBarComponentBundle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -286,6 +375,15 @@
 			buildConfigurations = (
 				563AD479222B7F1700C482C7 /* Debug */,
 				563AD47A222B7F1700C482C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56E121772235088D0012D9CF /* Build configuration list for PBXNativeTarget "SFTabBarComponentBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56E121752235088D0012D9CF /* Debug */,
+				56E121762235088D0012D9CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
