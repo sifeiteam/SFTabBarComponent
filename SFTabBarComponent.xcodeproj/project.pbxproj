@@ -10,6 +10,7 @@
 		563AD474222B7F1700C482C7 /* SFTabBarComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 563AD473222B7F1700C482C7 /* SFTabBarComponent.m */; };
 		563AD475222B7F1700C482C7 /* SFTabBarComponent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 563AD472222B7F1700C482C7 /* SFTabBarComponent.h */; };
 		563AD47D222B7F3500C482C7 /* SFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563AD47C222B7F3500C482C7 /* SFTabBarController.m */; };
+		56E1217C223538700012D9CF /* Tab.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56E1217B223538700012D9CF /* Tab.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,7 @@
 		563AD47B222B7F3500C482C7 /* SFTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTabBarController.h; sourceTree = "<group>"; };
 		563AD47C222B7F3500C482C7 /* SFTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTabBarController.m; sourceTree = "<group>"; };
 		56E121722235088D0012D9CF /* SFTabBarComponentBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFTabBarComponentBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		56E1217B223538700012D9CF /* Tab.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tab.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +86,25 @@
 		56E121732235088D0012D9CF /* SFTabBarComponentBundle */ = {
 			isa = PBXGroup;
 			children = (
+				56E12179223538700012D9CF /* master */,
 			);
 			path = SFTabBarComponentBundle;
+			sourceTree = "<group>";
+		};
+		56E12179223538700012D9CF /* master */ = {
+			isa = PBXGroup;
+			children = (
+				56E1217A223538700012D9CF /* Config */,
+			);
+			path = master;
+			sourceTree = "<group>";
+		};
+		56E1217A223538700012D9CF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				56E1217B223538700012D9CF /* Tab.plist */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E1217C223538700012D9CF /* Tab.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
